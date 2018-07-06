@@ -1,14 +1,17 @@
 # Convolutional Neural Networks for the identification of signatures of natural selection and functional mutations in the human genome
 
-# realdata_FASTA.py
+## realdata_FASTA.py
 
 REQUIREMENTS: 
+
 Python 3.6
 
-## It is the script for real data images; it produces three multi-population images and three single-population images for each population contained in the file .FASTA. 
+###### Script to convert real genetic allignment data into images; it produces three multi-population images and three single-population images for each population contained in the file .FASTA. 
 
 INPUT:
+
 gene -- gene name; example: gene = MCM6
+
 working_path -- example: "\Users\lucrezialorenzon\RESULT_1"
 
 Create a folder in working_path named gene+"_images"; example: MCM6_images
