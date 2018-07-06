@@ -87,7 +87,17 @@ It performs:
 * Classification report and confusion matrix
 5. CNN testing 
 
+## CNN_filters_activationmaps.py
 
+###### Visualization and evaluation of CNN learning process
+
+INPUT: 
+* CNN trained model
+* A genetic image
+
+OUTPUT:
+* Image of the filters of the first Convolutional layer
+* Image of the activation maps of the first Convolutional layer
 
 
 
