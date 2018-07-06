@@ -6,7 +6,13 @@
 
 REQUIREMENTS: Python 3.6
 
-INPUT: Two FASTA files that contain allignment genetic sequences; a reference genome (gene\_anc.fasta) and several genomes of the populations (gene\_gene.fasta). 
+INPUT: Two FASTA files that contain allignment genetic sequences; a reference genome (gene\_anc.fasta) and several genomes of the populations (gene\_gene.fasta)
+
+## MSMS_simulations.py
+
+###### Simulates genetic data.
+
+REQUIREMENTS: MSMS software (http://www.mabs.at/ewing/msms/index.shtml)
 
 ## MSMS_images.py
 
@@ -14,13 +20,17 @@ INPUT: Two FASTA files that contain allignment genetic sequences; a reference ge
 
 REQUIREMENTS: Python 3.6
 
-INPUT: Genetic simulations from MSMS software (http://www.mabs.at/ewing/msms/index.shtml)
+INPUT: Genetic simulations 
+
+## MSMS_summarystatistics.py
+
+###### Script that calculates the summary statistics of each simulation replicate. 
 
 ## SVM.py
 
 ###### Script that implements a Support Vector Machine. 
 
-INPUT: csv file that contains the summary statistics of interest, related to each MSMS simulation replicate.
+INPUT: csv file that contains the summary statistics of interest, related to each MSMS simulation replicate
 
 It performs:
 
@@ -35,7 +45,24 @@ It performs:
 
 ###### Script that implements a Convolutional Neural Network for binary classification (neutrality/positive selection).
 
-AND
+REQUIREMENTS: 
+
+* Python 3.5
+* Keras 2.2.0
+* Theano 1.0.0
+
+INPUT: Genetic images from simulations (created with MSMS_images.py)
+
+It performs:
+
+1. Dataset elaboration
+2. CNN model definition
+3. CNN training
+4. CNN evaluation 
+* PLOT: training/validation loss function
+* PLOT: training/validation accuracy
+* Classification report and confusion matrix
+5. CNN testing
 
 ## CNN_41classes.py
 
