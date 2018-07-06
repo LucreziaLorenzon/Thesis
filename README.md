@@ -8,7 +8,6 @@ REQUIREMENTS:
 Python 3.6
 
 INPUT:
-
 Two FASTA files that contain allignment genetic sequences; a reference genome (gene\_anc.fasta) and several genomes of the populations (gene\_gene.fasta). 
 
 ## MSMS_images.py
