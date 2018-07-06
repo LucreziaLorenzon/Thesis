@@ -1,6 +1,6 @@
 # Convolutional Neural Networks for the identification of signatures of natural selection and functional mutations in the human genome
 
-#realdata_FASTA.py
+# realdata_FASTA.py
 
 REQUIREMENTS: 
 Python 3.6
