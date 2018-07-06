@@ -5,7 +5,7 @@
 REQUIREMENTS: 
 Python 3.6
 
-It is the script for real data images; it produces three multi-population images and three single-population images for each population contained in the file .FASTA. 
+## It is the script for real data images; it produces three multi-population images and three single-population images for each population contained in the file .FASTA. 
 
 INPUT:
 gene -- gene name; example: gene = MCM6
