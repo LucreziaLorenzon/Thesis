@@ -16,7 +16,21 @@ REQUIREMENTS: Python 3.6
 
 INPUT: Genetic simulations from MSMS software (http://www.mabs.at/ewing/msms/index.shtml)
 
-## 
+## SVM.py
+
+###### Script that implements a Support Vector Machine. 
+
+INPUT: csv file that contains the summary statistics of interest, related to each MSMS simulation replicate.
+
+It performs:
+1. Dataset elaboration
+2. Parameter optimization (C and gamma) with RandomizedSearchCV
+3. Training of the classifier
+4. Decision surface visualization
+5. Model evaluation on a validation set (classification report and confusion matrix)
+6. Testing on a test set (classification report and confusion matrix)
+
+
 
 
 
