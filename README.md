@@ -29,7 +29,7 @@ It performs:
 3. Training of the classifier
 4. Decision surface visualization
 5. Model evaluation on a validation set (classification report and confusion matrix)
-6. Testing on a test set (classification report and confusion matrix)
+6. Testing 
 
 ## CNN_2classes.py
 
@@ -49,7 +49,11 @@ It performs:
 2. CNN model definition
 3. CNN training
 4. CNN evaluation 
+* PLOT: training/validation loss function
+* PLOT: training/validation accuracy
+* Classification report and confusion matrix
 5. CNN testing 
+
 
 
 
