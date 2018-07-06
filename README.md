@@ -35,6 +35,12 @@ It performs:
 
 ###### Script that implements a Convolutional Neural Network for binary classification (neutrality/positive selection).
 
+AND
+
+## CNN_41classes.py
+
+###### Script that implements a Convolutional Neural Network with 41 output classes of the selection coefficient.
+
 REQUIREMENTS: 
 
 * Python 3.5
