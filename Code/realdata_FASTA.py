@@ -163,7 +163,7 @@ def full_colour (n_gen,n_positions,matrix,population):
    #colour_genomes = b
     colour_genomes_uint8 = np.uint8(colour_genomes)
     colour_genomes_im = Image.fromarray(colour_genomes_uint8, mode = 'CMYK').convert('RGB')
-    string = "/home/lucrezialorenzon/RESULT_1/" + folder + "/img_fullcolor_" + population + ".bmp"
+    string = workink_path + folder + "/img_fullcolor_" + population + ".bmp"
     colour_genomes_im.save (string)
 
 #black_white crea l'immagine di tutti i genomi in bianco e nero, rispetto al
@@ -189,7 +189,7 @@ def black_white (n_gen,n_positions,alleles,matrix,ref_genome,population,p_thresh
    #bw_genomes = order(bw_genomes)
     bw_genomes_uint8 = np.uint8(bw_genomes)
     bw_genomes_im = Image.fromarray (bw_genomes_uint8*255, mode = 'L')
-    string = "/home/lucrezialorenzon/RESULT_1/" + folder + "/img_bw_" + population + ".bmp"
+    string = workink_path + folder + "/img_bw_" + population + ".bmp"
     bw_genomes_im.save (string)
                 
 #black_white_Mm crea l'immagine di tutti i genomi in bianco e nero, rispetto agli alleli 
@@ -208,7 +208,7 @@ def black_white_Mm (n_gen,n_positions,Mm,matrix,alleles,population):
    #bw_Mm_genomes = order(bw_Mm_genomes)
     bw_Mm_genomes_uint8 = np.uint8(bw_Mm_genomes)
     bw_Mm_genomes_im = Image.fromarray (bw_Mm_genomes_uint8*255, mode = 'L')
-    string = "/home/lucrezialorenzon/RESULT_1/" + folder + "/img_bw_Mm_" + population + ".bmp"
+    string = workink_path + folder + "/img_bw_Mm_" + population + ".bmp"
     bw_Mm_genomes_im.save (string)
 
 def colour_freq (freq,n_positions):
@@ -246,17 +246,17 @@ def Ad_freq (n_gen,n_positions,alleles,matrix,ref_genome,population):
 
 p_order = ['LWK','ESN','YRI','MSL','GWD','ASW','ACB','TSI','IBS','CEU','GBR','FIN','ITU','STU','PJL','GIH','BEB','CHS','CHB','CDX','JPT','KHV','MXL','PUR','CLM','PEL']
 
-
+working_path = "/Users/lucrezialorenzon/RESULT_1/"
 gene = "MCM6"
-folder = gene + "_images_2"
+folder = gene + "_images"
 alleles = ['A','C','G','T']
 #con populations = [] prendiamo tutte le popolazioni presenti nel file, altrimenti specifichiamo la lista delle pop. di interesse
 populations = []
 threshold = 0.05
 p_threshold = 0.05
 apply_threshold = False
-ref = SeqIO.read ("/home/lucrezialorenzon/RESULT_1/"+ gene +"_anc.fasta","fasta")
-records = list(SeqIO.parse("/home/lucrezialorenzon/RESULT_1/"+ gene +"_gene.fasta","fasta"))
+ref = SeqIO.read (workink_path + gene +"_anc.fasta","fasta")
+records = list(SeqIO.parse(workink_path + gene +"_gene.fasta","fasta"))
 
 populations,matrix,tot_n_gen,ref_genome,freq,Mm,n_positions,n,n_alleles = start (ref,records,alleles,p_order,populations,threshold,False,True,False,False,False)
 
@@ -277,19 +277,19 @@ def images (populations,matrix,tot_n_gen,ref_genome,freq,Mm,n_positions,n,n_alle
              colour_freq_uint8 = colour_freq (p_freq,n_positions)
              poli_freq_uint8 = np.concatenate((poli_freq_uint8, colour_freq_uint8),axis=0)
              poli_freq_im = Image.fromarray(poli_freq_uint8, mode = 'CMYK').convert('RGB')
-             string = "/home/lucrezialorenzon/RESULT_1/" + folder + "/poli_freq.bmp"
+             string = workink_path + folder + "/poli_freq.bmp"
              poli_freq_im.save (string)
      
              m_uint8 = Mm_freq (Mm,n_positions,p_freq)
              poli_m_uint8 = np.concatenate((poli_m_uint8, m_uint8),axis=0)
              poli_m_im = Image.fromarray(poli_m_uint8, mode = 'L')
-             string = "/home/lucrezialorenzon/RESULT_1/" + folder + "/poli_m.bmp"
+             string = workink_path + folder + "/poli_m.bmp"
              poli_m_im.save (string)
        
              freq_d_uint8 = Ad_freq (n_gen,n_positions,alleles,p_matrix,ref_genome,population)
              poli_d_uint8 = np.concatenate((poli_d_uint8, freq_d_uint8),axis=0)
              poli_d_im = Image.fromarray(poli_d_uint8, mode = 'L')
-             string = "/home/lucrezialorenzon/RESULT_1/" + folder + "/poli_d.bmp"
+             string = workink_path + folder + "/poli_d.bmp"
              poli_d_im.save (string)
         else:
              colour_freq_uint8 = colour_freq (p_freq,n_positions)
