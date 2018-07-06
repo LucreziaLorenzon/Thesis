@@ -23,6 +23,7 @@ INPUT: Genetic simulations from MSMS software (http://www.mabs.at/ewing/msms/ind
 INPUT: csv file that contains the summary statistics of interest, related to each MSMS simulation replicate.
 
 It performs:
+
 1. Dataset elaboration
 2. Parameter optimization (C and gamma) with RandomizedSearchCV
 3. Training of the classifier
@@ -30,7 +31,25 @@ It performs:
 5. Model evaluation on a validation set (classification report and confusion matrix)
 6. Testing on a test set (classification report and confusion matrix)
 
+## CNN_2classes.py
 
+###### Script that implements a Convolutional Neural Network for binary classification (neutrality/positive selection).
+
+REQUIREMENTS: 
+
+* Python 3.5
+* Keras 2.2.0
+* Theano 1.0.0
+
+INPUT: Genetic images from simulations (created with MSMS_images.py).
+
+It performs:
+
+1. Dataset elaboration
+2. CNN model definition
+3. CNN training
+4. CNN evaluation 
+5. CNN testing 
 
 
 
