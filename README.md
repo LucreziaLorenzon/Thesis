@@ -27,6 +27,7 @@ gene + "_gene.fasta" -- populations genomes; example: MCM6_gene.fasta
 
 # MSMS_images.py
 
+This script
 
 
 
