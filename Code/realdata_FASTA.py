@@ -15,7 +15,7 @@ import copy
 #freq è la matrice delle frequenze alleliche. Dimensioni: 4 x n_positions
 #indici: 0-A, 1-C, 2-G, 3-T.
 #n_alleles è un vettore contenente il numero di alleli presenti in ogni sito. Dimensioni: 1 x n_positions
-def start (ref,records,alleles,p_order,populations,threshold,delete_d,delete_mono,delete_bi,delete_tri,delete_quadri):
+def start (ref,records,alleles,p_order,populations,threshold,delete_d,delete_mono,delete_bi,delete_tri,delete_quadri,apply_threshold_global):
     #ESTRAGGO TUTTE LE POPOLAZIONI DAL FILE
     if populations == []:
        pops = []
@@ -95,21 +95,25 @@ def start (ref,records,alleles,p_order,populations,threshold,delete_d,delete_mon
                Mm [0,k] = letter
             if max2 == i:
                Mm [1,k] = letter
-   #f_del = np.zeros(n_positions)
-   #if delete_d == True:
-   #   for k in range(n_positions):
-   #       for i,letter in enumerate(alleles):
-   #           if ref_genome[k] == letter:
-   #              f_del[k]=1-(freq[i,k])
-   #else:
-   #    for k in range(n_positions):
-   #       for i,letter in enumerate(alleles):
-   #           if Mm[1,k] == letter:
-   #              f_del[k]=freq[i,k]
-   #positions = np.where(f_del<=threshold)
-   #mask,n_positions,matrix,freq,n_alleles,ref_genome = delete (n_positions,matrix,freq,n_alleles,ref_genome,positions)
-   #Mm = Mm[:,mask]
-   #f_del = f_del[mask]
+   #filtraggio per frequenza 
+   #se delete_d = True eliminiamo le posizioni in cui la frequenza dell'allele derivato è minore o uguale di threshold
+   #altrimenti eliminiamo le posizioni in cui la frequenza dell'allele minor è minore o uguale di threshold
+   if apply_threshold_global = True:
+      f_del = np.zeros(n_positions)
+      if delete_d == True:
+         for k in range(n_positions):
+             for i,letter in enumerate(alleles):
+                 if ref_genome[k] == letter:
+                    f_del[k]=1-(freq[i,k])
+      else:
+          for k in range(n_positions):
+             for i,letter in enumerate(alleles):
+                 if Mm[1,k] == letter:
+                    f_del[k]=freq[i,k]
+      positions = np.where(f_del<=threshold)
+      mask,n_positions,matrix,freq,n_alleles,ref_genome = delete (n_positions,matrix,freq,n_alleles,ref_genome,positions)
+      Mm = Mm[:,mask]
+      f_del = f_del[mask]
     return [populations,matrix,tot_n_gen,ref_genome,freq,Mm,n_positions,n,n_alleles]
 
 def delete (n_positions,matrix,freq,n_alleles,ref_genome,positions):
@@ -252,13 +256,19 @@ folder = gene + "_images"
 alleles = ['A','C','G','T']
 #con populations = [] prendiamo tutte le popolazioni presenti nel file, altrimenti specifichiamo la lista delle pop. di interesse
 populations = []
+#filtraggio globale (apply_threshold_global) per frequenza 
+#se delete_d = True eliminiamo le posizioni in cui la frequenza dell'allele derivato è minore o uguale di threshold
+#altrimenti eliminiamo le posizioni in cui la frequenza dell'allele minor è minore o uguale di threshold
+apply_threshold_global = False
 threshold = 0.05
-p_threshold = 0.05
+#p_threshold la mettiamo nelle immagini im_bw (funzione black_white); possiamo eliminare le posizioni in cui 
+#la frequenza dell'allele ancestrale è minore o uguale di p_threshold
 apply_threshold = False
+p_threshold = 0.05
 ref = SeqIO.read (workink_path + gene +"_anc.fasta","fasta")
 records = list(SeqIO.parse(workink_path + gene +"_gene.fasta","fasta"))
 
-populations,matrix,tot_n_gen,ref_genome,freq,Mm,n_positions,n,n_alleles = start (ref,records,alleles,p_order,populations,threshold,False,True,False,False,False)
+populations,matrix,tot_n_gen,ref_genome,freq,Mm,n_positions,n,n_alleles = start (ref,records,alleles,p_order,populations,threshold,False,True,False,False,False,apply_threshold_global)
 
 def images (populations,matrix,tot_n_gen,ref_genome,freq,Mm,n_positions,n,n_alleles,p_threshold,apply_threshold):                                                                             
 
